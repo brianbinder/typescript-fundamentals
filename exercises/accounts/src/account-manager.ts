@@ -53,3 +53,10 @@ export class AccountManager {
     return newAdmin;
   }
 }
+
+let u: IUser = {email: 'a', password: 'b'};
+let admin: IAdmin = {email: 'a', password: 'b', isActive: true, adminSince: new Date()};
+let am = new AccountManager();
+am.activateNewUser(admin, u);
+am.promoteToAdmin(admin, u);
+
