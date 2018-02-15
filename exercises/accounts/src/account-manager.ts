@@ -48,9 +48,7 @@ export class AccountManager {
     let newAdmin: IAdmin;
     if (!existingAdmin.adminSince) throw "Not an admin!";
     if (user.isActive !== true) throw "User must be active in order to be promoted to admin!";
-    newAdmin = user as IAdmin;
-    newAdmin.adminSince = new Date();
-    return newAdmin;
+    return {...user, adminSince: new Date()};
   }
 }
 
