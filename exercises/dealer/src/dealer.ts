@@ -42,7 +42,7 @@ export class Dealer {
   }
   //deals 5 cards
   dealHand(numCards: number): Card[] {
-    if (numCards > this.getLength() || numCards < 0) throw 'There are not enough cards left to deal this hand';
+    if (numCards > this.getLength() || numCards < 0) throw new Error('There are not enough cards left to deal this hand');
     return this.deck.splice(this.getLength() - numCards, numCards);
   }
   //returns number of cards left in deck
@@ -51,9 +51,11 @@ export class Dealer {
   }
   //converts a card tuple into a string [0, 2] ==> 'Three of Clubs'
   readCard(card: Card): string {
-    return `${CardNumber[card[1]]} of ${Suit[card[0]]}`;
+    let [suit, cardNumber] = card;
+    return `${CardNumber[cardNumber]} of ${Suit[suit]}`;
   }
 }
+
 
 // let myDealer = new Dealer();
 // console.log(myDealer.getLength());
